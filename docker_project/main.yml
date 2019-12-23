@@ -1,0 +1,26 @@
+---
+- hosts: my_hosts
+  remote_user: dockeraveo
+  become: yes
+  become_method: sudo
+  tasks:
+    # write tasks to get version from git and \
+    # use for next task 
+    - maven_artifact:
+        group_id: com.tw
+        artifact_id: myapp
+        repository_url: 'https://repo.tw.com/maven'
+        dest: ../files/myapp-{{ version }}.jar
+
+    - name: Build Docker image from Dockerfile
+      docker_image:
+        name: web
+        path: docker
+        state: build
+    
+    - name: Tag and push image to docker hub
+      docker_image:
+        name: myimage:xxxxx 
+        repository: dockeraveo/myimage:latest
+        push: yes
+        source: local

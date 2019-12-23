@@ -1,0 +1,7 @@
+apiVersion: extensions/v1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+spec:
+  rules:
+    - host: dev.api.com
