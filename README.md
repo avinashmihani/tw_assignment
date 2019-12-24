@@ -1,6 +1,6 @@
 # tw_assignment
 
-1. Docker project should take care of:
+1. Docker project includes an ansible playbook which should take care of:
 ```
 a. Downloading application jar from artifactory
 b. Create Docker image
